@@ -794,6 +794,10 @@ body {
     height: 55px;
   }
 
+  .hero-section {
+    background-attachment: scroll;
+  }
+
   .footer-content {
     flex-direction: column;
     text-align: center;
