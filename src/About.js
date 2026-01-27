@@ -7,15 +7,15 @@ function About({ onNavigateHome }) {
       <header className="site-header">
         <nav className="navigation">
           <div className="nav-container">
-            <a href="#" onClick={(e) => { e.preventDefault(); onNavigateHome(); }} className="logo">
+            <button onClick={onNavigateHome} className="logo" style={{background: 'none', border: 'none', padding: 0, cursor: 'pointer'}}>
               <img src="/logo.png" alt="Paddler's Galeria" className="logo-image" />
-            </a>
+            </button>
             
             <ul className="nav-menu">
-              <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigateHome(); }}>HOME</a></li>
-              <li><a href="#" className="active">ABOUT</a></li>
-              <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigateHome(); window.location.hash = 'collection'; }}>COLLECTION</a></li>
-              <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigateHome(); window.location.hash = 'faq'; }}>FAQ</a></li>
+              <li><button onClick={onNavigateHome} style={{background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit'}}>HOME</button></li>
+              <li><span className="active" style={{cursor: 'default'}}>ABOUT</span></li>
+              <li><button onClick={(e) => { onNavigateHome(); setTimeout(() => window.location.hash = 'collection', 100); }} style={{background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit'}}>COLLECTION</button></li>
+              <li><button onClick={(e) => { onNavigateHome(); setTimeout(() => window.location.hash = 'faq', 100); }} style={{background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit'}}>FAQ</button></li>
             </ul>
 
             <div className="social-icons">
