@@ -800,8 +800,8 @@ body {
 
   .hero-section {
     background-attachment: scroll;
-    background-size: 110%;
-    will-change: background-position;
+    background-size: cover;
+    min-height: 100vh;
   }
 
   .footer-content {
