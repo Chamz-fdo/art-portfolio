@@ -77,7 +77,7 @@ function App() {
       <section className="debut-collection" id="collection">
         <div className="collection-container">
           <h2 className="collection-title">DEBUT COLLECTION</h2>
-          <p className="collection-subtitle">The first breath of Paddler's Galleria</p>
+          <p className="collection-subtitle">The first breath of Paddler's Galeria</p>
           
           <div className="collection-grid">
             <div className="collection-item">
