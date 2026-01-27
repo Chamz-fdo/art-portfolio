@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
@@ -16,6 +16,20 @@ function App() {
       [item]: !prev[item]
     }));
   };
+
+  // Parallax effect for mobile
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.querySelector('.hero-section');
+      if (heroSection) {
+        const scrolled = window.pageYOffset;
+        heroSection.style.backgroundPositionY = scrolled * 0.5 + 'px';
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [currentPage]);
 
   if (currentPage === 'about') {
     // Dynamically import and render About page
