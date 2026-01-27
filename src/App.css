@@ -382,6 +382,10 @@ body {
   opacity: 0;
 }
 
+.collection-image-front.flipped {
+  opacity: 0;
+}
+
 .collection-item-title {
   font-size: clamp(1rem, 2vw, 1.2rem);
   color: #3e3e3e;
@@ -638,7 +642,7 @@ body {
 }
 
 .faq-answer {
-  font-size: clamp(0.8rem, 1.8vw, 1rem);
+  font-size: clamp(1.2rem, 1.8vw, 1.2rem);
   color: #858383;
   line-height: 1.4;
   max-width: 1500px;

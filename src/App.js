@@ -4,6 +4,18 @@ import './App.css';
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
+  const [flippedImages, setFlippedImages] = useState({
+    item1: false,
+    item2: false,
+    item3: false
+  });
+
+  const toggleImage = (item) => {
+    setFlippedImages(prev => ({
+      ...prev,
+      [item]: !prev[item]
+    }));
+  };
 
   if (currentPage === 'about') {
     // Dynamically import and render About page
@@ -69,16 +81,16 @@ function App() {
           
           <div className="collection-grid">
             <div className="collection-item">
-              <div className="collection-image-wrapper">
+              <div className="collection-image-wrapper" onClick={() => toggleImage('item1')}>
                 <img 
                   src="/collection-1.jpg" 
                   alt="A gentle nebula holds you close"
-                  className="collection-image collection-image-front"
+                  className={`collection-image collection-image-front ${flippedImages.item1 ? 'flipped' : ''}`}
                 />
                 <img 
                   src="/collection-1-back.jpg" 
                   alt="A gentle nebula holds you close - alternate view"
-                  className="collection-image collection-image-back"
+                  className={`collection-image collection-image-back ${flippedImages.item1 ? 'flipped' : ''}`}
                 />
               </div>
               <h3 className="collection-item-title">A gentle nebula holds you close</h3>
@@ -89,16 +101,16 @@ function App() {
             </div>
 
             <div className="collection-item">
-              <div className="collection-image-wrapper">
+              <div className="collection-image-wrapper" onClick={() => toggleImage('item2')}>
                 <img 
                   src="/collection-2.jpeg" 
                   alt="Urban Echoes"
-                  className="collection-image collection-image-front"
+                  className={`collection-image collection-image-front ${flippedImages.item2 ? 'flipped' : ''}`}
                 />
                 <img 
                   src="/collection-2-back.jpg" 
                   alt="Urban Echoes - alternate view"
-                  className="collection-image collection-image-back"
+                  className={`collection-image collection-image-back ${flippedImages.item2 ? 'flipped' : ''}`}
                 />
               </div>
               <h3 className="collection-item-title">Urban Echoes</h3>
@@ -109,16 +121,16 @@ function App() {
             </div>
 
             <div className="collection-item">
-              <div className="collection-image-wrapper">
+              <div className="collection-image-wrapper" onClick={() => toggleImage('item3')}>
                 <img 
                   src="/collection-3.jpg" 
                   alt="A place that waits"
-                  className="collection-image collection-image-front"
+                  className={`collection-image collection-image-front ${flippedImages.item3 ? 'flipped' : ''}`}
                 />
                 <img 
                   src="/collection-3-back.jpg" 
                   alt="A place that waits - alternate view"
-                  className="collection-image collection-image-back"
+                  className={`collection-image collection-image-back ${flippedImages.item3 ? 'flipped' : ''}`}
                 />
               </div>
               <h3 className="collection-item-title">A place that waits</h3>
