@@ -60,7 +60,7 @@ function About({ onNavigateHome }) {
             </p>
 
             <p>
-              <strong>Paddlers Galeria was born from this same spirit. A belief that spaces deserve to breathe, and that art should feel personal.</strong>
+              <strong>Paddler's Galeria was born from this same spirit. A belief that spaces deserve to breathe, and that art should feel personal.</strong>
               {' '}
               <p>We don't simply create art to fill walls. We create pieces that belong within the space, that respond to its mood, its light, and its rhythm. From our galeria to your space, we bring art that is handcrafted, thoughtfully designed, and created to live with you.</p>
             </p>
