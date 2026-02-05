@@ -4,23 +4,28 @@ import './App.css';
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
-  const [flippedImages, setFlippedImages] = useState({
-    item1: false,
-    item2: false,
-    item3: false
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    window.scrollTo(0, 0);
+  };
+  const [currentImageIndex, setCurrentImageIndex] = useState({
+    item1: 0,
+    item2: 0,
+    item3: 0
   });
 
-  const toggleImage = (item) => {
-    setFlippedImages(prev => ({
+  const toggleImage = (item, totalImages) => {
+    setCurrentImageIndex(prev => ({
       ...prev,
-      [item]: !prev[item]
+      [item]: (prev[item] + 1) % totalImages
     }));
   };
 
   if (currentPage === 'about') {
     // Dynamically import and render About page
     const About = require('./About').default;
-    return <About onNavigateHome={() => setCurrentPage('home')} />;
+    return <About onNavigateHome={() => handlePageChange('home')} />;
   }
 
   return (
@@ -81,37 +86,63 @@ function App() {
           
           <div className="collection-grid">
             <div className="collection-item">
-              <div className="collection-image-wrapper" onClick={() => toggleImage('item1')}>
+              <div className="collection-image-wrapper" onClick={() => toggleImage('item1', 3)}>
                 <img 
                   src="/collection-1.jpg" 
                   alt="A gentle nebula holds you close"
-                  className={`collection-image collection-image-front ${flippedImages.item1 ? 'flipped' : ''}`}
+                  className={`collection-image ${currentImageIndex.item1 === 0 ? 'active' : ''}`}
                 />
                 <img 
                   src="/collection-1-back.jpg" 
-                  alt="A gentle nebula holds you close - alternate view"
-                  className={`collection-image collection-image-back ${flippedImages.item1 ? 'flipped' : ''}`}
+                  alt="A gentle nebula holds you close - view 2"
+                  className={`collection-image ${currentImageIndex.item1 === 1 ? 'active' : ''}`}
                 />
+                <img 
+                  src="/collection-1-third.jpg" 
+                  alt="A gentle nebula holds you close - view 3"
+                  className={`collection-image ${currentImageIndex.item1 === 2 ? 'active' : ''}`}
+                />
+                <button className="swap-icon" aria-label="Click to view more images">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="17 1 21 5 17 9"></polyline>
+                    <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                    <polyline points="7 23 3 19 7 15"></polyline>
+                    <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                  </svg>
+                </button>
               </div>
               <h3 className="collection-item-title">A gentle nebula holds you close</h3>
               <p className="collection-item-description">
-                Here lives a quiet space, where memory stretches beyond time
+                I almost left, but the light found me here
               </p>
               <p className="collection-item-medium">Acrylic on canvas</p>
             </div>
 
             <div className="collection-item">
-              <div className="collection-image-wrapper" onClick={() => toggleImage('item2')}>
+              <div className="collection-image-wrapper" onClick={() => toggleImage('item2', 3)}>
                 <img 
                   src="/collection-2.jpeg" 
                   alt="Urban Echoes"
-                  className={`collection-image collection-image-front ${flippedImages.item2 ? 'flipped' : ''}`}
+                  className={`collection-image ${currentImageIndex.item2 === 0 ? 'active' : ''}`}
                 />
                 <img 
                   src="/collection-2-back.jpg" 
-                  alt="Urban Echoes - alternate view"
-                  className={`collection-image collection-image-back ${flippedImages.item2 ? 'flipped' : ''}`}
+                  alt="Urban Echoes - view 2"
+                  className={`collection-image ${currentImageIndex.item2 === 1 ? 'active' : ''}`}
                 />
+                <img 
+                  src="/collection-2-third.jpeg" 
+                  alt="Urban Echoes - view 3"
+                  className={`collection-image ${currentImageIndex.item2 === 2 ? 'active' : ''}`}
+                />
+                <button className="swap-icon" aria-label="Click to view more images">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="17 1 21 5 17 9"></polyline>
+                    <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                    <polyline points="7 23 3 19 7 15"></polyline>
+                    <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                  </svg>
+                </button>
               </div>
               <h3 className="collection-item-title">Urban Echoes</h3>
               <p className="collection-item-description">
@@ -121,17 +152,30 @@ function App() {
             </div>
 
             <div className="collection-item">
-              <div className="collection-image-wrapper" onClick={() => toggleImage('item3')}>
+              <div className="collection-image-wrapper" onClick={() => toggleImage('item3', 3)}>
                 <img 
                   src="/collection-3.jpg" 
                   alt="A place that waits"
-                  className={`collection-image collection-image-front ${flippedImages.item3 ? 'flipped' : ''}`}
+                  className={`collection-image ${currentImageIndex.item3 === 0 ? 'active' : ''}`}
                 />
                 <img 
                   src="/collection-3-back.jpg" 
-                  alt="A place that waits - alternate view"
-                  className={`collection-image collection-image-back ${flippedImages.item3 ? 'flipped' : ''}`}
+                  alt="A place that waits - view 2"
+                  className={`collection-image ${currentImageIndex.item3 === 1 ? 'active' : ''}`}
                 />
+                <img 
+                  src="/collection-3-third.jpg" 
+                  alt="A place that waits - view 3"
+                  className={`collection-image ${currentImageIndex.item3 === 2 ? 'active' : ''}`}
+                />
+                <button className="swap-icon" aria-label="Click to view more images">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="17 1 21 5 17 9"></polyline>
+                    <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                    <polyline points="7 23 3 19 7 15"></polyline>
+                    <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                  </svg>
+                </button>
               </div>
               <h3 className="collection-item-title">A place that waits</h3>
               <p className="collection-item-description">
@@ -145,7 +189,7 @@ function App() {
 
       <section className="meet-artist-section" id="about">
         <div className="meet-artist-container">
-          <div className="meet-artist-card">
+          <div className="meet-artist-card fade-in-section">
             <div className="galeria-intro">
               <p className="galeria-tagline">PADDLER'S GALERIA CURATES ABSTRACT ART FOR QUIET LIVING</p>
               <p className="galeria-description">
@@ -162,7 +206,7 @@ function App() {
             {/* <p className="meet-artist-description">
               A soul split between two worlds - from paddles to palettes.
             </p> */}
-            <button className="read-more-btn" onClick={() => setCurrentPage('about')}>READ MORE</button>
+            <button className="read-more-btn" onClick={() => handlePageChange('about')}>READ MORE</button>
           </div>
         </div>
       </section>

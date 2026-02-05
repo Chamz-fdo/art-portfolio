@@ -116,6 +116,48 @@ body {
   width: 100%;
 }
 
+/* Navigation button styles for About page */
+.nav-link-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #877b0f;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+  position: relative;
+  padding: 0;
+}
+
+.nav-link-btn:hover {
+  color: #6a5f0c;
+}
+
+.nav-link-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #877b0f;
+  transition: width 0.3s ease;
+}
+
+.nav-link-btn:hover::after {
+  width: 100%;
+}
+
+.nav-active {
+  color: #877b0f;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  cursor: default;
+}
+
 .social-icons {
   display: flex;
   gap: 1.2rem;
@@ -160,27 +202,33 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
-  background: url('../public/hero-background.jpg') center center / cover no-repeat, linear-gradient(135deg, #5DADA6 0%, #7BC4BF 50%, #877b0f 100%);
+  background: url('../public/hero-background.jpg') center center / cover no-repeat;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   margin-top: 80px;
+  overflow: hidden;
 }
 
-.hero-section::before {
-  content: '';
+.brush-strokes {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, 
-    rgba(255, 255, 255, 0.2), 
-    rgba(255, 255, 255, 0.2), 
-    rgba(255, 255, 255, 0.2));
-  background-size: 200% 200%;
-  animation: gradientShift 8s ease infinite;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
+  z-index: 0;
+}
+
+.brush-strokes path,
+.brush-strokes ellipse {
+  filter: blur(0.5px);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hero-section::before {
+  display: none;
 }
 
 .hero-content {
@@ -188,6 +236,7 @@ body {
   z-index: 1;
   padding: 2rem;
   max-width: 1000px;
+  position: relative;
   /* margin-top: 3vh; */
 }
 
@@ -197,7 +246,7 @@ body {
   color: #FFFFFF;
   margin-bottom: 1rem;
   letter-spacing: 1px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  text-shadow: none;
   line-height:0.8;
   animation: zoomIn 1.5s ease-out;
 }
@@ -363,27 +412,16 @@ body {
   aspect-ratio: 4/5;
   object-fit: cover;
   display: block;
-  transition: opacity 0.6s ease;
-}
-
-.collection-image-front {
-  position: relative;
-  z-index: 2;
-}
-
-.collection-image-back {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.6s ease;
 }
 
-.collection-image-wrapper:hover .collection-image-front {
-  opacity: 0;
-}
-
-.collection-image-front.flipped {
-  opacity: 0;
+.collection-image.active {
+  opacity: 1;
+  position: relative;
 }
 
 .collection-item-title {
@@ -419,9 +457,51 @@ body {
   letter-spacing: 0.5px;
 }
 
+/* Swap Icon Button */
+.swap-icon {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background-color: rgba(255, 249, 239, 0.9);
+  border: 2px solid #877b0f;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.swap-icon svg {
+  color: #877b0f;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.swap-icon:hover {
+  background-color: #877b0f;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(135, 123, 15, 0.3);
+}
+
+.swap-icon:hover svg {
+  color: #fff9ef;
+  transform: rotate(180deg);
+}
+
+.swap-icon:active {
+  transform: scale(0.95);
+}
+
 /* Meet the Artist Section */
 .meet-artist-section {
-  padding: 6rem 2rem;
+  padding: 8rem 2rem;
   background-image: url('../public/artist-background.jpg');
   background-size: cover;
   background-position: center;
@@ -460,6 +540,24 @@ body {
   max-width: 1500px;
   margin: 0 auto;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* Fade-in animation for Meet the Artist section */
+.fade-in-section {
+  opacity: 0;
+  animation: fadeInScale 1.2s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .galeria-intro {

@@ -12,10 +12,10 @@ function About({ onNavigateHome }) {
             </button>
             
             <ul className="nav-menu">
-              <li><button onClick={onNavigateHome} style={{background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit'}}>HOME</button></li>
-              <li><span className="active" style={{cursor: 'default'}}>ABOUT</span></li>
-              <li><button onClick={(e) => { onNavigateHome(); setTimeout(() => window.location.hash = 'collection', 100); }} style={{background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit'}}>COLLECTION</button></li>
-              <li><button onClick={(e) => { onNavigateHome(); setTimeout(() => window.location.hash = 'faq', 100); }} style={{background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit'}}>FAQ</button></li>
+              <li><button onClick={onNavigateHome} className="nav-link-btn">HOME</button></li>
+              <li><span className="nav-active">ABOUT</span></li>
+              <li><button onClick={(e) => { onNavigateHome(); setTimeout(() => window.location.hash = 'collection', 100); }} className="nav-link-btn">COLLECTION</button></li>
+              <li><button onClick={(e) => { onNavigateHome(); setTimeout(() => window.location.hash = 'faq', 100); }} className="nav-link-btn">FAQ</button></li>
             </ul>
 
             <div className="social-icons">
@@ -81,7 +81,6 @@ function About({ onNavigateHome }) {
           </div>
         </div>
       </section>
-
       <footer className="site-footer">
         <div className="footer-content">
           <p>&copy; 2026 Paddler's Galeria. All rights reserved.</p>
