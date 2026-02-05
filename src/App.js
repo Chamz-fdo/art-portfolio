@@ -111,9 +111,9 @@ function App() {
                   </svg>
                 </button>
               </div>
-              <h3 className="collection-item-title">A gentle nebula holds you close</h3>
+              <h3 className="collection-item-title">Memories from another life</h3>
               <p className="collection-item-description">
-                I almost left, but the light found me here
+                I almost left, but the light found me here. And a gentl nebula holds you close
               </p>
               <p className="collection-item-medium">Acrylic on canvas</p>
             </div>
@@ -177,7 +177,7 @@ function App() {
                   </svg>
                 </button>
               </div>
-              <h3 className="collection-item-title">A place that waits</h3>
+              <h3 className="collection-item-title">Absence of you</h3>
               <p className="collection-item-description">
                 A place that doesn't move forward or back, only inward, where belonging arrives quietly
               </p>
